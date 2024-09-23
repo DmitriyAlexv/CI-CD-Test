@@ -15,23 +15,23 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
+          cache-dependency-path: App/Front/front/package-lock.json
           node-version: "latest"
           cache: "npm"
-          working-directory: ../App/Front/front
 
       - run: npm ci
-        working-directory: ../App/Front/front
+        working-directory: App/Front/front
 
       - run: npm run lint
-        working-directory: ../App/Front/front
+        working-directory: App/Front/front
       - run: npm run prettier
-        working-directory: ../App/Front/front
+        working-directory: App/Front/front
 
       - run: npm run build
-        working-directory: ../App/Front/front
+        working-directory: App/Front/front
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
           start: npm start
-          working-directory: ../App/Front/front
+          working-directory: App/Front/front
