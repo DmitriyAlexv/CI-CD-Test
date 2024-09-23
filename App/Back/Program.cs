@@ -1,7 +1,5 @@
-using Microsoft.Extensions.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
-var a = 1;
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin",
@@ -47,7 +45,10 @@ app.MapGet("/getHello", () =>
 
 app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+public class WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+    public DateOnly Date { get; } = Date;
+    public string? Summary { get; } = Summary;
 }
