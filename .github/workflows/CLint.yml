@@ -25,3 +25,5 @@ jobs:
         with:
           solutionPath: App/App.sln
           dotnetVersion: ${{ steps.setup-dotnet.outputs.dotnet-version }}
+          minimumSeverity: WARNING
+          minimumReportSeverity: WARNING
