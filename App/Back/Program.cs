@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var a = 1;
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin",
