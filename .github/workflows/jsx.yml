@@ -7,17 +7,25 @@ on:
     branches: ["main"]
 
 jobs:
-  lint-javascript:
-    name: Lint JavaScript Codebase
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: Lint Codebase
-        uses: jrcligny/run-eslint-action@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          pattern: 'App/Front/front/src/**/*.js'
-          overrideConfigFile: App/Front/front/src/eslint.config.js
+          node-version: "latest"
+          cache: "npm"
+
+      - run: npm ci
+
+      - run: npm run lint
+      - run: npm run prettier
+
+      - run: npm run build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm start
