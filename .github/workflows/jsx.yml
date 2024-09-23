@@ -19,7 +19,5 @@ jobs:
       - name: Lint Codebase
         uses: jrcligny/run-eslint-action@v1
         with:
-          # Specify the files to lint. This input is optional (default: `**/*.js`)
           pattern: 'App/Front/front/src/**/*.js'
-          # Specify the ESLint configuration file. This input is optional (default: none)
           overrideConfigFile: App/Front/front/src/eslint.config.js
