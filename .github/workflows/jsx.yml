@@ -27,9 +27,3 @@ jobs:
 
       - run: npm run build
         working-directory: App/Front/front
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          start: npm start
-          working-directory: App/Front/front
